@@ -49,10 +49,8 @@ public final class ConcreteProduct implements Product {
         }
 
         public ConcreteProduct build() {
-            if (partA == null || partB == null) {
-                throw new IllegalStateException("Both partA and partB must be set.");
-            }
             return new ConcreteProduct(this);
         }
     }
 }
+

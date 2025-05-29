@@ -1,67 +1,25 @@
-package patterns;
+package patterns.structural;
 
-import patterns.creational.builder.ConcreteProduct;
-import patterns.creational.singleton.Singleton;
-import patterns.creational.factory.Factory;
-import patterns.creational.Product;
-import patterns.creational.abstractfactory.AbstractFactory;
-import patterns.creational.abstractfactory.FactoryA;
-import patterns.creational.abstractfactory.FactoryB;
-import patterns.creational.prototype.ConcretePrototype;
-import patterns.structural.adapter.Shape;
-import patterns.structural.adapter.RectangleAdapter;
 import patterns.structural.adapter.LegacyRectangle;
+import patterns.structural.adapter.RectangleAdapter;
 import patterns.structural.bridge.DrawAPI;
 import patterns.structural.bridge.RedCircle;
 import patterns.structural.composite.CompositeGraphic;
 import patterns.structural.composite.Graphic;
 import patterns.structural.composite.Leaf;
 import patterns.structural.decorator.Coffee;
-import patterns.structural.decorator.SimpleCoffee;
 import patterns.structural.decorator.MilkDecorator;
+import patterns.structural.decorator.SimpleCoffee;
 import patterns.structural.decorator.SugarDecorator;
 import patterns.structural.facade.ComputerFacade;
 import patterns.structural.flyweight.ShapeFactory;
 import patterns.structural.proxy.Image;
 import patterns.structural.proxy.ProxyImage;
 
-public class Main {
+public class StructuralPatternsDemo {
     public static void main(String[] args) {
-        // Creational Patterns
-        System.out.println("=== Singleton ===");
-        Singleton singleton = Singleton.getInstance();
-        singleton.showMessage();
-
-        System.out.println("\n=== Factory Method ===");
-        Product productA = Factory.createProduct("A");
-        productA.use();
-        Product productB = Factory.createProduct("B");
-        productB.use();
-
-        System.out.println("\n=== Abstract Factory ===");
-        AbstractFactory factoryA = new FactoryA();
-        Product abstractProductA = factoryA.createProduct();
-        abstractProductA.use();
-        AbstractFactory factoryB = new FactoryB();
-        Product abstractProductB = factoryB.createProduct();
-        abstractProductB.use();
-
-        System.out.println("\n=== Builder ===");
-        Product builderProduct = new ConcreteProduct.Builder()
-                .setPartA("Feature A")
-                .setPartB("Feature B")
-                .build();
-        builderProduct.show();
-
-        System.out.println("\n=== Prototype ===");
-        ConcretePrototype prototype = new ConcretePrototype("Original Data");
-        ConcretePrototype clonedPrototype = (ConcretePrototype) prototype.clone();
-        prototype.show();
-        clonedPrototype.show();
-
-        // Structural Patterns
-        System.out.println("\n=== Adapter Pattern ===");
-        Shape adaptedRectangle = new RectangleAdapter(new LegacyRectangle());
+        System.out.println("=== Adapter Pattern ===");
+        patterns.structural.adapter.Shape adaptedRectangle = new RectangleAdapter(new LegacyRectangle());
         adaptedRectangle.draw(10, 20, 30, 40);
 
         System.out.println("\n=== Bridge Pattern ===");
@@ -100,4 +58,3 @@ public class Main {
         image.display(); // loading unnecessary
     }
 }
-
